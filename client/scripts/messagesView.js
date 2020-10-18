@@ -6,6 +6,10 @@ var MessagesView = {
   },
 
   render: function() {
+    _.each(Messages, (message) => {
+      var $message = MessageView.render(message);
+      MessagesView.$chats.append($message);
+    });
   }
 
 };
