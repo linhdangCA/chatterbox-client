@@ -7,6 +7,7 @@ var App = {
   initialize: function() {
     App.username = window.location.search.substr(10);
 
+    debugger;
     FormView.initialize();
     RoomsView.initialize();
     MessagesView.initialize();
@@ -15,13 +16,16 @@ var App = {
     App.startSpinner();
     App.fetch(App.stopSpinner);
 
+    setInterval(App.fetch, 5000);
   },
 
   fetch: function(callback = ()=>{}) {
     Parse.readAll((data) => {
-      // examine the response from the server request:
-      Messages = data.results;
-      MessagesView.render();
+
+      if (!data.results || !data.results.length) { return; }
+
+      Rooms.update(data.results, RoomsView.render);
+      Messages.update(data.results, MessagesView.render);
 
 
       callback();

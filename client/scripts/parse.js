@@ -5,12 +5,12 @@ var Parse = {
   create: function(message, successCB, errorCB = null) {
     $.ajax({
       url: Parse.server,
-      type: 'GET',
-      data: { order: '-createdAt' },
+      type: 'POST',
+      data: JSON.stringify(message),
       contentType: 'application/json',
       success: successCB,
-      error: errorCB || function(error) {
-        console.error('chatterbox: Failed to fetch messages', error);
+      error: errorCB || function (error) {
+        console.error('chatterbox: Failed to create message', error);
       }
     });
   },
