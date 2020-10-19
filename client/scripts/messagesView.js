@@ -1,21 +1,5 @@
 var MessagesView = {
 
-  // $chats: $('#chats'),
-
-  // initialize: function() {
-  // },
-
-  // render: function() {
-
-  //   Messages
-  //     .items()
-  //     .each((message) => {
-  //     // .filter(Room.isSelected(message))
-  //       var $message = MessageView.render(message);
-  //       MessagesView.$chats.append($message);
-  //     });
-  // }
-
   $chats: $('#chats'),
 
   initialize: function() {
